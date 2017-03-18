@@ -105,9 +105,10 @@ eurobank-red {
 }
 
 section.account-header {
-    margin-bottom: 2em;
+    margin-bottom: 0.8em;
     padding-bottom: 1em;
     background: #24346F;
+    box-shadow: 0px 3px 31px -8px rgba(0,0,0,0.75);
 }
 
 header .top-bar {
@@ -150,14 +151,16 @@ header .card-details {
 }
 
 .transaction-list ul li {
+    padding: 0.75em 0.5em;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: justify;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    padding: 0.75em 0.5em;
-    
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
 
 .transaction-list ul li:not(:last-child) {
@@ -170,4 +173,13 @@ header .card-details {
 
 .transaction-list ul li .transaction-details {
     padding-left: 1em;
+}
+
+.transaction-list ul li .transaction-amount {
+    padding-right: 1em;
+}
+
+.transaction-list ul li .transaction-amount .value {
+    font-size: 1.25em;
+    font-weight: 700;
 }
