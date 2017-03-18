@@ -1,6 +1,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FinFreak</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
@@ -9,53 +10,59 @@
     <section class="account-header">
         <header>
             <div class="top-bar">
-                <div class="user-icon">User Icon</div>
-                <div class="menu-icon">Menu Icon</div>
+                <div class="user-icon">
+                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                </div>
+                <div class="menu-icon">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
             </div>
             <div class="card-icon">
-                <img src="https://placehold.it/400x175?text=Card+Icon" alt="">
+                <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
             </div>
             <div class="card-details">
-                <div class="account-number"><h4>Account Number</h4></div>
-                <div class="account-balance"><h4>Account Balance</h4></div>
+                <div class="account-number"><h5>Account Number</h5></div>
+                <div class="account-balance"><h5>Account Balance</h5></div>
             </div>
         </header>
     </section>
     
     <section class="transaction-list">
         <ul>
-            <li class="record status">
-                <section class="record-details">
+            <li class="transaction status">
+                <div class="transaction-details">
                     <div class="description">GOOGLE *SERVICES</div>
                     <div class="date">17 Mar 2017</div>
-                </section>
+                </div>
 
-                <section class="record-amount">
-                    <div class="amount">2.43</div>
-                </section>
+                <div class="transaction-amount">
+                    <div class="value">2.43</div>
+                </div>
             </li>
-            <li class="record status">
-                <section class="record-details">
+            <li class="transaction status">
+                <div class="transaction-details">
                     <div class="description">PAYPAL *UBER BV</div>
                     <div class="date">12 Mar 2017</div>
-                </section>
+                </div>
 
-                <section class="record-amount">
-                    <div class="amount">9.03</div>
-                </section>
+                <div class="transaction-amount">
+                    <div class="value">9.03</div>
+                </div>
             </li>
-            <li class="record status">
-                <section class="record-details">
+            <li class="transaction status">
+                <div class="transaction-details">
                     <div class="description">EASYJET</div>
                     <div class="date">01 Mar 2017</div>
-                </section>
+                </div>
 
-                <section class="record-amount">
-                    <div class="amount">123.07</div>
-                </section>
+                <div class="transaction-amount">
+                    <div class="value">123.07</div>
+                </div>
             </li>
         </ul>
     </section>
+    
+    <script src="https://use.fontawesome.com/5ebc2a46ca.js"></script>
 
 </body>
 </html>
