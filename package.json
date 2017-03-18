@@ -1,0 +1,23 @@
+{
+  "name": "finfreak",
+  "version": "0.0.1",
+  "description": "A handy tool to pay your credit card items one by one without too much hassle",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha /tests/**/*.js"
+  },
+  "keywords": [
+    "beyondhackathon",
+    "api",
+    "2017",
+    "hackathon"
+  ],
+  "author": "Nick Rossolatos",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "node-uuid": "^1.4.7",
+    "request": "^2.81.0"
+  }
+}
