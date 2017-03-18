@@ -1,0 +1,80 @@
+/* Typography Scale - 1.333 Perfect Fourth */
+html {font-size: 1em;}
+
+body {
+  background-color: #F1F1F1;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  line-height: 1.45;
+  color: #333;
+}
+
+p {margin-bottom: 1.3em;}
+
+h1, h2, h3, h4 {
+  font-weight: inherit;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 3.157em;
+  font-weight: 700;
+}
+
+h2 {
+    font-size: 2.369em;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1.777em;
+    font-weight: 700;
+}
+
+h4 {
+    font-size: 1.333em;
+    font-weight: 700;
+}
+
+small, .font_small {font-size: 0.75em;}
+
+/* Styles Guide */
+
+euro-blue {
+    color: #24346F;
+}
+
+euro-red {
+    color: #D52727;
+}
+
+section.account-header {
+    border: 1px dotted blue;
+}
+
+header .top-bar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    border: 1px dotted red;
+}
+
+header .card-icon {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+header .card-icon img {
+    margin: 1em;
+}
+
+header .card-details {
+    text-align: center;
+}
