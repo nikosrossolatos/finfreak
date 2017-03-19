@@ -1,9 +1,16 @@
 (function() {
 
   var currentCard,
-      cardTransactions
+      cardTransactions,
+      showBucketButton = document.getElementById("show-bucket-page")
 
 
+
+
+  showBucketButton.addEventListener("click", function(e) {
+    e.preventDefault
+    togglePages()
+  })
 
   getProducts()
 
