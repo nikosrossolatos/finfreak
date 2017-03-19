@@ -44,22 +44,25 @@
     card.icon = icon
     
     var header = document.getElementById("main-space")
-    render(header, card)
 
     get("/cards/" + card.contract_number, function(transactions){
       var transactionsContainer = document.getElementById("transactions-list")
-
       var transaction_id = 0
+      var available_balance = card.available_balance
+      
       transactions.map(function(transaction) {
         transaction.id = ++transaction_id
         if(transaction.description.indexOf("(PROMISED)") >= 0){
           transaction.status = "promised"
           transaction.description = transaction.description.replace("(PROMISED)", "")
+          available_balance = ((available_balance * 1000) - (transaction.amount * 1000)) / 1000
+          available_balance = available_balance.toFixed(2)
         }
         return transaction
       })
 
-
+      card.available_balance = available_balance
+      render(header, card)
       renderTransactions(transactionsContainer, transactions)
 
       transactionsContainer.addEventListener("click", function(e) {

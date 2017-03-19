@@ -126,6 +126,7 @@ header .top-bar .menu-icon {
     font-size: 1.5em;
     color: #FFFFFF;
     line-height: 0.5;
+    cursor: pointer;
 }
 
 header .card-icon {

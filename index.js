@@ -45,7 +45,7 @@ app.get("/clear", function(req, res) {
   })
 })
 
-app.get('/', function (req, res) {
+app.get('/authorise', function (req, res) {
   user.authorise("msimmons", "ckmkxujmltr", function(err, body){
     if(err) {
       res.send(error)
