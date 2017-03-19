@@ -9,7 +9,7 @@
 
   showBucketButton.addEventListener("click", function(e) {
     e.preventDefault
-    togglePages()
+    renderBucketPage()
   })
 
   getProducts()
@@ -86,6 +86,12 @@
         }
       })
     })
+  }
+
+  function renderBucketPage() {
+    var bucketPage = document.getElementById("bucket-page")
+
+    togglePages()
   }
 
 

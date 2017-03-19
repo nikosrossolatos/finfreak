@@ -137,7 +137,7 @@ header .card-icon {
     justify-content: center;
 }
 
-header .card-icon .fa-credit-card-alt {
+header .card-icon > i {
     font-size: 5em;
     color: #FFFFFF;
 }
