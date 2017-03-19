@@ -37,11 +37,37 @@ var render = function(container, data) {
 
     if(value)
       element.classList.add(value)
+
+    // stupid hack but will work for the demo :P
+    if(!value && element.className.indexOf("transaction") >= 0) 
+      element.classList.remove("promised")
+  }
+
+  var idElements = container.querySelectorAll("[data-id]")
+
+  if(container.dataset.id){
+    idElements = Array.prototype.slice.call(idElements)
+    idElements.push(container)
+  }
+
+  // Render element values
+  for (var i = idElements.length - 1; i >= 0; i--) {
+    var element = idElements[i],
+        valueKey = element.dataset.id,
+        value
+
+    try {
+      value = eval("data." + valueKey)
+    } catch(e) {
+      value = ""
+    }
+
+    if(value)
+      element.dataset.identifier = value
   }
 
   var arrayElements = container.querySelectorAll("[data-each]")
   for (var i = arrayElements.length - 1; i >= 0; i--) {
-    console.log(arrayElements[i])
     var element = arrayElements[i],
         valueKey = element.dataset.each,
         dataset
@@ -53,8 +79,14 @@ var render = function(container, data) {
     }
 
     for (var k = 0; k < dataset.length; k++) {
-      templateElement = element.cloneNode(true)
-      element.parentNode.appendChild(templateElement)
+      templateElement = element.parentNode.querySelector("[data-each-pass-id='" + k + "']") || element.cloneNode(true)
+
+      templateElement.dataset.eachPassId = k
+
+      delete templateElement.dataset.each
+      if(!templateElement.parentNode)
+        element.parentNode.appendChild(templateElement)
+
       render(templateElement, dataset[k])
     }
     element.style.display = "none"

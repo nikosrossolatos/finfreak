@@ -21,10 +21,9 @@ user.exists(function(exists) {
   }
   else {
     console.log("user exists, no need to save him again!")
+    user.loadInfo()
   }
 })
-
-user.loadInfo()
 
 function defaultUser() {
   return {
@@ -85,9 +84,23 @@ app.put("/cards/:contractNumber", bodyParser.json(), function(req, res){
 
   // since we are doing in-memory searches this doesn't need to be asynchronous
   var card = user.getCard(req.params.contractNumber)
-  console.log("card to replace", card)
-  console.log("OMGOMGOMG", req.body)
-  res.end("OMGOMGOMOMGOMGOMGO")
+
+  var transactions = req.body
+  transactions.map(function(transaction) {
+
+    // "(PROMISED) is already removed from the descriptor by the front end so we either add it or do nothing"
+    if(transaction.status === "promised"){
+      transaction.description = "(PROMISED) " + transaction.description
+    }
+  })
+
+  console.log("transactions to save!", transactions)
+  // values have already been passed by reference
+  card.transactions = transactions
+
+  user.save()
+
+  res.send(card)
 })
 
 
