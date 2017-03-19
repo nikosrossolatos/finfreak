@@ -1,5 +1,5 @@
-var express = require('express')
-var bodyParser = require("body-parser")
+var express = require("express")
+var path = require("path")
 var request = require("request")
 var User = require("./lib/user")
 var Product = require("./lib/product")
@@ -72,11 +72,14 @@ app.get("/products", function(req, res) {
   })
 })
 
-app.get("/card/:contractNumber", function(req, res) {
+app.get("/cards/:contractNumber", function(req, res) {
   user.getCardDetails(req.params.contractNumber, function(err, response, data) {
     handleResponse(res, err, data)
   })
 })
+
+
+app.use(express.static(path.join(__dirname, "public")))
 
 var handleResponse = function(res, err, data) {
   if(err) return res.send({err}) 

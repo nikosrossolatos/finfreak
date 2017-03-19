@@ -1,0 +1,95 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FinFreak</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <script src="https://use.fontawesome.com/5ebc2a46ca.js"></script>
+</head>
+<body class="pages">
+
+    <article class="page page1">
+        <section class="account-header">
+            <header id="main-space">
+                <div class="top-bar">
+                    <div class="user-icon">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                    </div>
+                    <div class="menu-icon">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="card-icon">
+                    <i class="fa" aria-hidden="true" data-class-name="icon"></i>
+                </div>
+                <div class="card-details">
+                    <div class="account-number">
+                        Card Number
+                        <h5 data-value-key="contract_number">Account Number</h5>
+                    </div>
+                    <div class="account-balance">
+                        Balance:
+                        <h5 data-value-key="balance">Account Balance</h5>
+                    </div>
+                </div>
+            </header>
+        </section>
+        
+        <section class="transaction-list" id="transactions-list">
+            <ul>
+                <li data-each="transactions" class="transaction status" data-class-name="status">
+                    <div class="transaction-details">
+                        <div class="description" data-value-key="description">Loading...</div>
+                        <div class="date" data-value-key="transaction_date">Loading...</div>
+                    </div>
+
+                    <div class="transaction-amount">
+                        <div class="value" data-value-key="amount">Loading...</div>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+    </article>
+
+    <article class="page page2 transaction">
+        <section class="account-header">
+            <header id="main-space">
+                <div class="top-bar">
+                    <div class="user-icon" id="back-button">
+                        < Back
+                    </div>
+                    <div class="menu-icon">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="card-icon">
+                    <i class="fa fa-barcode" aria-hidden="true" data-class-name="icon"></i>
+                </div>
+                <div class="card-details">
+                    <div class="account-number">
+                        Transaction
+                        <h5 data-value-key="contract_number">Αγορά Ergonomic heuristic flexibility</h5>
+                    </div>
+                    <div class="account-balance">
+                        Date
+                        <h5 data-value-key="balance">2017-3-18</h5>
+                    </div>
+                        
+                    <div class="actions promised-actions">
+                        <button>Dispute</button>
+                    </div>
+                    <div class="actions pending-actions">
+                        <button>Resolve</button>
+                    </div>
+                </div>
+            </header>
+        </section>
+        
+
+    </article>
+    <script src="/js/render.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
