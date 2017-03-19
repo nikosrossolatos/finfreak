@@ -205,7 +205,7 @@ header .account-balance h5:after {
 
 .transaction-list .transaction.promised {
   border-left: 5px solid #afb954;
-  
+  display: none;
 }
 
 
