@@ -1,5 +1,6 @@
 var express = require("express")
 var path = require("path")
+var bodyParser = require("body-parser")
 var request = require("request")
 var User = require("./lib/user")
 var Product = require("./lib/product")
@@ -22,6 +23,8 @@ user.exists(function(exists) {
     console.log("user exists, no need to save him again!")
   }
 })
+
+user.loadInfo()
 
 function defaultUser() {
   return {
@@ -76,6 +79,15 @@ app.get("/cards/:contractNumber", function(req, res) {
   user.getCardDetails(req.params.contractNumber, function(err, response, data) {
     handleResponse(res, err, data)
   })
+})
+
+app.put("/cards/:contractNumber", bodyParser.json(), function(req, res){
+
+  // since we are doing in-memory searches this doesn't need to be asynchronous
+  var card = user.getCard(req.params.contractNumber)
+  console.log("card to replace", card)
+  console.log("OMGOMGOMG", req.body)
+  res.end("OMGOMGOMOMGOMGOMGO")
 })
 
 

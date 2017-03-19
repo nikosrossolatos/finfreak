@@ -1,6 +1,9 @@
 (function() {
 
-  ajax("/products", function(data) {
+  var currentCard,
+      cardTransactions
+
+  get("/products", function(data) {
     
     // Add spinning loader for the icon
     var card = data.filter(function(product) {
@@ -9,10 +12,19 @@
 
     if(card && card instanceof Array && card.length > 0) {
       card = card[0]
+      currentCard = card
       renderCardPage(card)
     }
 
   })
+
+
+  function updateCard(card, transactions) {
+
+    put("/cards/" + card.contract_number, transactions, function(data) {
+      console.log(data)
+    })
+  }
 
   function renderCardPage(card) {
     var icon = "fa-credit-card-alt"
@@ -21,17 +33,18 @@
     var header = document.getElementById("main-space")
     render(header, card)
 
-    ajax("/cards/" + card.contract_number, function(data){
+    get("/cards/" + card.contract_number, function(transactions){
       var transactionsContainer = document.getElementById("transactions-list")
 
-      data.map(function(transaction) {
+      transactions.map(function(transaction) {
         if(transaction.description.indexOf("(PROMISED)") >= 0){
           transaction.status = "promised"
           transaction.description = transaction.description.replace("(PROMISED)", "")
         }
         return transaction
       })
-      renderTransactions(transactionsContainer, data)
+
+      renderTransactions(transactionsContainer, transactions)
 
       transactionsContainer.addEventListener("click", function(e) {
         e.preventDefault()
@@ -39,6 +52,7 @@
         var li = findParentElementByTagName("li", e.target)
         if(li) {
           togglePages()
+          updateCard(card, transactions)
         }
       })
     })
@@ -62,7 +76,7 @@
     })
   }
 
-  function ajax(path, cb) {
+  function get(path, cb) {
 
     var request = new XMLHttpRequest()
     request.open("GET", path)
@@ -81,6 +95,27 @@
         cb(response, status)
     })
     request.send()
+  }
+
+  function put(path, data, cb) {
+
+    var request = new XMLHttpRequest()
+    request.open("PUT", path)
+    request.setRequestHeader("Accept", "application/json")
+    request.addEventListener("load", function(event) {
+      var status = this.status
+      try {
+        var response = JSON.parse(this.response)
+      } catch(e) {
+        response = this.response
+      }
+
+      if(!cb || !(cb instanceof Function)) 
+        return
+      if(cb && cb instanceof Function)
+        cb(response, status)
+    })
+    request.send(JSON.stringify(data))
   }
 
   function findParentElementByTagName(tagName, element) {
