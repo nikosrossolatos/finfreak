@@ -96,14 +96,6 @@ small, .font_small {font-size: 0.75em;}
 
 /* Styles Guide */
 
-eurobank-blue {
-    color: #24346F;
-}
-
-eurobank-red {
-    color: #D52727;
-}
-
 section.account-header {
     margin-bottom: 0.8em;
     padding-bottom: 1em;
@@ -212,7 +204,8 @@ header .account-balance h5:after {
 }
 
 .transaction-list .transaction.promised {
-  border-left: 5px solid #24346F;
+  border-left: 5px solid #afb954;
+  
 }
 
 
