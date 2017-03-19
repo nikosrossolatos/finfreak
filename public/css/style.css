@@ -94,6 +94,8 @@ h5 {
 
 small, .font_small {font-size: 0.75em;}
 
+.thin {font-weight: 400;}
+
 /* Styles Guide */
 
 section.account-header {
