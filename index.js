@@ -41,7 +41,7 @@ app.get("/clear", function(req, res) {
   user.clearProducts()
   user.addDefaultProducts()
   user.save(function(err, response, data){
-    console.log("after saving", data)
+    res.redirect("/")
   })
 })
 
@@ -101,8 +101,6 @@ app.put("/cards/:contractNumber", bodyParser.json(), function(req, res){
       transaction.description = "(PROMISED) " + transaction.description
     }
   })
-
-  console.log("transactions to save!", transactions)
   // values have already been passed by reference
   card.transactions = transactions
 
