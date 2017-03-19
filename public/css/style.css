@@ -52,7 +52,7 @@ html {font-size: 1em;}
 
 body {
   background-color: #F1F1F1;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   font-weight: 400;
   line-height: 1.45;
   color: #333;
@@ -123,8 +123,9 @@ header .top-bar {
 header .top-bar .user-icon,
 header .top-bar .menu-icon {
     margin: 0.6em;
-    font-size: 2em;
+    font-size: 1.5em;
     color: #FFFFFF;
+    line-height: 0.5;
 }
 
 header .card-icon {
@@ -137,12 +138,12 @@ header .card-icon {
 }
 
 header .card-icon .fa-credit-card-alt {
-    font-size: 10em;
+    font-size: 5em;
     color: #FFFFFF;
 }
 
 header .card-icon {
-    margin: 1em;
+    margin: 0.5em;
 }
 
 header .card-details {
@@ -150,8 +151,17 @@ header .card-details {
     color: #FFFFFF;
 }
 
+header .account-balance {
+    margin-top: 0.3em;
+}
+
+header .account-balance h5 {
+    font-size: 1.7em;
+    
+}
+
 .transaction-list ul li {
-    padding: 0.75em 0.5em;
+    padding: 0.85em 0.5em;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -172,7 +182,9 @@ header .card-details {
 }
 
 .transaction-list ul li .transaction-details {
-    padding-left: 1em;
+    padding: 0 1em;
+    -ms-flex-preferred-size: 7 1 auto;
+    flex-basis: 7 1 auto;
 }
 
 .transaction-list ul li .transaction-amount {
@@ -188,7 +200,7 @@ header .card-details {
   border-left: 5px solid #24346F;
 }
 
-
+/* 2 */
 
 html, body {
   overflow-x: hidden;
@@ -200,10 +212,12 @@ html, body {
 }
 
 .pages.switch .page1{
+  -webkit-transform: translate3d(-100%, 0, 0);
   transform: translate3d(-100%, 0, 0);
 }
 
 .pages.switch .page2{
+  -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
 
@@ -213,11 +227,20 @@ html, body {
   right:0;
   top:0;
   bottom:0;
+  -webkit-transition: -webkit-transform .25s linear;
+  transition: -webkit-transform .25s linear;
   transition: transform .25s linear;
+  transition: transform .25s linear, -webkit-transform .25s linear;
 }
 
 .page2 {
+  -webkit-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0);
+}
+
+.page2 .account-header .top-bar .user-icon .back-icon {
+    font-size: 1.5em;
+    font-weight: 700;
 }
 
 
