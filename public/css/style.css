@@ -237,18 +237,29 @@ html, body {
   transform: translate3d(0, 0, 0);
 }
 
+html,body {
+  -webkit-overflow-scrolling: touch;
+  overflow-y:scroll;
+}
+
 .page {
   position:absolute;
   left:0;
   right:0;
   top:0;
   bottom:0;
+  overflow-y: scroll;
+  overflow-x: hidden;
   -webkit-transition: -webkit-transform .25s linear;
   transition: -webkit-transform .25s linear;
   transition: transform .25s linear;
   transition: transform .25s linear, -webkit-transform .25s linear;
 }
 
+
+.page .transaction-list {
+  -webkit-overflow-scrolling: touch;
+}
 .page2 {
   -webkit-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0);
