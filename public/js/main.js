@@ -9,7 +9,7 @@
 
   showBucketButton.addEventListener("click", function(e) {
     e.preventDefault
-    renderBucketPage()
+    renderBucketPage(currentCard)
   })
 
   getProducts()
@@ -61,6 +61,9 @@
         return transaction
       })
 
+      // global. Shame on me
+      cardTransactions = transactions
+
       card.available_balance = available_balance
       render(header, card)
       renderTransactions(transactionsContainer, transactions)
@@ -91,9 +94,59 @@
     })
   }
 
-  function renderBucketPage() {
+  function renderBucketPage(card) {
     var bucketPage = document.getElementById("bucket-page")
+    var transactionsContainer = document.getElementById("bucket-transactions-list")
 
+    get("/cards/" + card.contract_number + "/bucket/", function(bucket) {
+      console.log("bucket", bucket)
+
+      bucket.transactions = cardTransactions.filter(function(transaction) {
+        return transaction.status === "promised"
+      })
+
+      for (var i = 0; i < bucket.transactions.length; i++) {
+        bucket.available_balance += -(bucket.transactions[i].amount)
+        bucket.transactions[i].amount = -(bucket.transactions[i].amount)
+        bucket.transactions[i].amount = bucket.transactions[i].amount.toFixed(2)
+      }
+      render(bucketPage, bucket)
+      renderTransactions(transactionsContainer, bucket.transactions)
+
+      transactionsContainer.addEventListener("click", function(e) {
+        e.preventDefault()
+
+        var button = findParentElementByTagName("button", e.target)
+        if(button) {
+          // togglePages()
+          var li = findParentElementByTagName("li", e.target)
+
+          var transaction = bucket.transactions.filter(function(transaction) {
+            return transaction.id == li.dataset.identifier
+          })[0]
+
+          // toggle
+          if(transaction.status === "promised") {
+            transaction.status = ""  
+          }
+          else {
+            transaction.status = "promised"
+          }
+          
+          console.log("TUDT", bucket.transactions)
+          cardTransactions.map(function(transaction) {
+
+            // check the bucketTransactions
+            for (var k = 0; k < bucket.transactions.length; k++) {
+              if(bucket.transactions[k].id === transaction.id) {
+                transaction.status = bucket.transactions[k].status
+              }
+            }
+          })
+          updateCard(card, cardTransactions)
+        }
+      })
+    })
     togglePages()
   }
 

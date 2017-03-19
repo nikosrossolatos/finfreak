@@ -80,6 +80,14 @@ app.get("/cards/:contractNumber", function(req, res) {
   })
 })
 
+
+app.get("/cards/:contractNumber/bucket", function(req, res) {
+  user.getBucketForCard(req.params.contractNumber, function(err, bucket) {
+    handleResponse(res, err, bucket)
+  })
+})
+
+
 app.put("/cards/:contractNumber", bodyParser.json(), function(req, res){
 
   // since we are doing in-memory searches this doesn't need to be asynchronous

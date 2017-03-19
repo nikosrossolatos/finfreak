@@ -70,14 +70,32 @@
                 <div class="card-details">
                     <div class="account-number">
                         Bucket Account
-                        <h5 data-value-key="contract_number">1234-5555-2223-9585</h5>
+                        <h5 data-value-key="contract_number">Loading...</h5>
                     </div>
                     <div class="account-balance">
                         Balance
-                        <h5 data-value-key="balance">424</h5>
+                        <h5><span data-value-key="available_balance">Loading...</span></h5>
                     </div>
                 </div>
             </header>
+        </section>
+
+        <section class="transaction-list" id="bucket-transactions-list">
+            <ul>
+                <li data-each="transactions" class="transaction status" data-id="id">
+                    <div class="transaction-details">
+                        <div class="description" data-value-key="description">Loading...</div>
+                        <div class="date" data-value-key="transaction_date">Loading...</div>
+                    </div>
+
+                    <div class="transaction-amount">
+                        <div class="value" data-value-key="amount">Loading...</div>
+                        <div class="actions pending-actions">
+                            <button>bucket <i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </section>
         
 

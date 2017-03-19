@@ -13,6 +13,8 @@ var render = function(container, data) {
     } catch(e) {
       value = ""
     }
+
+    if(value === undefined) value = ""
     element.innerHTML = value
   }
 
